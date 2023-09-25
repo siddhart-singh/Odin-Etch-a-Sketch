@@ -8,6 +8,7 @@ let grid = document.querySelector(".grid-container");
 let colorInput = document.querySelector(".color");
 let color = "#abcdef";
 let gridLineCheckbox = document.querySelector(".grid-line-checkbox");
+let randomColorButton = document.querySelector(".suprise-me");
 hexaToDeci(color);
 init();
 
@@ -35,6 +36,10 @@ function hexaToDeci(...colors) {
   }
 }
 
+function DeciToHex(...colors){
+    
+    return colors.map(el => el.toString(16).padStart(2, '0'));
+}
 colorInput.addEventListener("change", (e) => {
   color = e.target.value;
 });
@@ -50,6 +55,22 @@ function generateGrid(size) {
   }
 }
 
+function random(min, max){
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+randomColorButton.addEventListener("click", () => {
+    let red = random(0,255);
+    let green = random(0,255);
+    let blue = random(0,255);
+    color = `rgb(${red},${green},${blue})`
+    let hex = DeciToHex(red, green, blue);
+    console.log(hex);
+    colorInput.value = `#${hex[0]}${hex[1]}${hex[2]}`;
+})
+
 grid.addEventListener("mousemove", (e) => {
   e.target.style.backgroundColor = color;
 });
@@ -60,5 +81,10 @@ gridLineCheckbox.addEventListener("change", (e) => {
         for (let el of grid.children){
             el.classList.add("canvas-grid-lines");
         }
+    }else{
+        for (let el of grid.children){
+            el.classList.remove("canvas-grid-lines");
+        }
     }
+    
 })

@@ -4,6 +4,7 @@
     box-sizing: border-box;
 }
 
+
 body{
     width: 100vw;
     height: 100vh;
@@ -34,15 +35,29 @@ h1{
     border-radius: 12px;
 
 }
-
 .controls{
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
     gap: 24px;
+    font-family: 'Martian Mono', monospace;
 }
 
+.color-control{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+
+
+
+.suprise-me{
+    padding: 4px;
+    font-family: 'Martian Mono', monospace;
+}
 
 .grid-container{
     width: 400px;
