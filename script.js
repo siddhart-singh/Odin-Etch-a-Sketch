@@ -62,6 +62,7 @@ function generateGrid(size) {
       div.classList.add("canvas-grid-lines");
     }
     div.style.minWidth = minWidth + "px";
+    div.style.backgroundColor = `rgb(225, 225, 220)`
     grid.appendChild(div);
   }
 }
