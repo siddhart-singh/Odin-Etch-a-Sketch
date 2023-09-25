@@ -9,6 +9,8 @@ let colorInput = document.querySelector(".color");
 let color = "#abcdef";
 let gridLineCheckbox = document.querySelector(".grid-line-checkbox");
 let randomColorButton = document.querySelector(".suprise-me");
+let eraseBtn = document.querySelector(".erase-btn");
+let erase = false;
 hexaToDeci(color);
 init();
 
@@ -36,9 +38,8 @@ function hexaToDeci(...colors) {
   }
 }
 
-function DeciToHex(...colors){
-    
-    return colors.map(el => el.toString(16).padStart(2, '0'));
+function DeciToHex(...colors) {
+  return colors.map((el) => el.toString(16).padStart(2, "0"));
 }
 colorInput.addEventListener("change", (e) => {
   color = e.target.value;
@@ -55,36 +56,43 @@ function generateGrid(size) {
   }
 }
 
-function random(min, max){
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min
+function random(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 randomColorButton.addEventListener("click", () => {
-    let red = random(0,255);
-    let green = random(0,255);
-    let blue = random(0,255);
-    color = `rgb(${red},${green},${blue})`
-    let hex = DeciToHex(red, green, blue);
-    console.log(hex);
-    colorInput.value = `#${hex[0]}${hex[1]}${hex[2]}`;
-})
-
-grid.addEventListener("mousemove", (e) => {
-  e.target.style.backgroundColor = color;
+  let red = random(0, 255);
+  let green = random(0, 255);
+  let blue = random(0, 255);
+  color = `rgb(${red},${green},${blue})`;
+  let hex = DeciToHex(red, green, blue);
+  console.log(hex);
+  colorInput.value = `#${hex[0]}${hex[1]}${hex[2]}`;
 });
 
-console.log(gridLineCheckbox.value)
+grid.addEventListener("mousemove", (e) => {
+  if (!erase) {
+    e.target.style.backgroundColor = color;
+  }else{
+    e.target.style.backgroundColor = "";
+  }
+});
+
+console.log(gridLineCheckbox.value);
 gridLineCheckbox.addEventListener("change", (e) => {
-    if(e.target.checked){
-        for (let el of grid.children){
-            el.classList.add("canvas-grid-lines");
-        }
-    }else{
-        for (let el of grid.children){
-            el.classList.remove("canvas-grid-lines");
-        }
+  if (e.target.checked) {
+    for (let el of grid.children) {
+      el.classList.add("canvas-grid-lines");
     }
-    
+  } else {
+    for (let el of grid.children) {
+      el.classList.remove("canvas-grid-lines");
+    }
+  }
+});
+
+eraseBtn.addEventListener("change", (e) => {
+    erase = e.target.checked;
 })
