@@ -77,4 +77,15 @@ h1{
     gap: 8px;
 }
 
+footer{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 8px;
+}
 
+.socials{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
