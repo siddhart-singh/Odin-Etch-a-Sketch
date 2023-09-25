@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Mooli&display=swap');
+
+
 *{
     padding: 0;
     margin: 0;
@@ -82,10 +85,12 @@ footer{
     justify-content: flex-start;
     align-items: center;
     margin-top: 8px;
+    font-family: 'Mooli', sans-serif;
 }
 
 .socials{
     display: flex;
     justify-content: center;
     align-items: center;
+    color: beige;
 }
