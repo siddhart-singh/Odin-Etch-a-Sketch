@@ -7,7 +7,7 @@ let gridSize;
 let grid = document.querySelector(".grid-container");
 let colorInput = document.querySelector(".color");
 let color = "#abcdef";
-
+let gridLineCheckbox = document.querySelector(".grid-line-checkbox");
 hexaToDeci(color);
 init();
 
@@ -50,6 +50,15 @@ function generateGrid(size) {
   }
 }
 
-grid.addEventListener("mousedown", (e) => {
+grid.addEventListener("mousemove", (e) => {
   e.target.style.backgroundColor = color;
 });
+
+console.log(gridLineCheckbox.value)
+gridLineCheckbox.addEventListener("change", (e) => {
+    if(e.target.checked){
+        for (let el of grid.children){
+            el.classList.add("canvas-grid-lines");
+        }
+    }
+})

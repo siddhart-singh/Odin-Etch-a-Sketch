@@ -56,6 +56,17 @@ h1{
 
 .grid{
     flex: 1;
-    border: 1px solid grey;
 }
 
+.canvas-grid-lines{
+    outline: 1px solid grey;
+}
+
+
+
+.grid-line{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
