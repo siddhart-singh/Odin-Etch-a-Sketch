@@ -45,7 +45,7 @@ h1{
 }
 
 
-.suprise-me{
+.suprise-me, .clear-btn{
     padding: 4px;
     font-family: 'Martian Mono', monospace;
 }
@@ -76,3 +76,5 @@ h1{
     align-items: center;
     gap: 8px;
 }
+
+
