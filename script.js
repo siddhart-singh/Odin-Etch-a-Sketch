@@ -11,6 +11,8 @@ let gridLineCheckbox = document.querySelector(".grid-line-checkbox");
 let randomColorButton = document.querySelector(".suprise-me");
 let eraseBtn = document.querySelector(".erase-btn");
 let erase = false;
+let shading = document.querySelector(".shading");
+let shadeCheck = false;
 hexaToDeci(color);
 init();
 
@@ -72,11 +74,24 @@ randomColorButton.addEventListener("click", () => {
   colorInput.value = `#${hex[0]}${hex[1]}${hex[2]}`;
 });
 
-grid.addEventListener("mousemove", (e) => {
-  if (!erase) {
-    e.target.style.backgroundColor = color;
-  }else{
+grid.addEventListener("mouseover", (e) => {
+  if (erase ) {
     e.target.style.backgroundColor = "";
+    
+  }
+  else if(shadeCheck){
+
+    let targetSplit = e.target.style.backgroundColor.split(",");
+    console.log(targetSplit);
+    let red = targetSplit[0].split("(")[1];
+    let green = targetSplit[1];
+    let blue = targetSplit[2].split(")")[0];
+    e.target.style.backgroundColor = `rgb(${parseInt(parseInt(red)*0.9)},${parseInt(parseInt(green)*0.9)},${parseInt(parseInt(blue)*0.9)})`
+
+  }
+  else{
+      e.target.style.backgroundColor = color;
+      e.target.setAttribute("data-color", color);
   }
 });
 
@@ -95,4 +110,8 @@ gridLineCheckbox.addEventListener("change", (e) => {
 
 eraseBtn.addEventListener("change", (e) => {
     erase = e.target.checked;
+})
+
+shading.addEventListener("change", (e) => {
+    shadeCheck = e.target.checked;
 })
